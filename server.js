@@ -11,9 +11,9 @@ app.get('/table', (req, res) => {
   fs.readFile('table.json', 'utf8', (e, data) => {
     if (e) { console.log(e) }
 
-    const employees = JSON.parse(data)
+    const table = JSON.parse(data)
 
-    res.json(employees)
+    res.json(table)
   })
 })
 
@@ -31,5 +31,10 @@ app.post('/table', (req, res) => {
     })
   })
 })
-
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+})
+app.get('/reservation', (req, res) => {
+  res.sendFile(path.join(__dirname, 'reservation.html'));
+})
 app.listen(3000)
